@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('account', function($routes) {
     $routes->get('login', 'Auth\Login::index');
-    $routes->get('callback', 'Auth\Login::callback');
+    $routes->get('callback', 'Auth\Login::oauthProccess');
+    $routes->get('localAuth', 'Auth\Login::localProccess');
     $routes->post('submit', 'Auth\Login::submit');
 });
