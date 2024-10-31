@@ -41,17 +41,17 @@
                         <input type="password" id="password" name="password" class="bg-transparent placeholder:text-sm py-2.5 w-full outline-none focus:outline-none text-sm" placeholder="Password">
                     </div>
                     <button type="Submit" class="duration-150 bg-[#F4DFC8] hover:bg-[#FAF6F0] w-full px-4 py-2 rounded-md my-4">Login</button>
-                  </form>
-                  <div class="relative inline-flex items-center justify-center w-full">
-                    <hr class="w-full h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
-                    <span class="absolute px-3 text-[#F4DFC8] bg-black">or</span>
-                  </div>
-                  <button class="flex justify-center duration-150 bg-[#FAF6F0] hover:bg-[#F4DFC8] w-full px-2 py-2 rounded-md my-4 text-sm items-center gap-2">
-                    <div class="text-[#F4DFC8] bg-black px-2 py-1 rounded-md">
-                      <i class="fa-brands fa-google"></i>
+                    <div class="relative inline-flex items-center justify-center w-full">
+                      <hr class="w-full h-px bg-gray-200 border-0 dark:bg-gray-700">
+                      <span class="absolute px-3 text-[#F4DFC8] bg-black">or</span>
                     </div>
-                    <p>Continue With Google</p>
-                  </button>
+                    <a href="<?= $link; ?>" class="flex justify-center duration-150 bg-[#FAF6F0] hover:bg-[#F4DFC8] w-full px-2 py-2 rounded-md my-4 text-sm items-center gap-2">
+                      <div class="text-[#F4DFC8] bg-black px-2 py-1 rounded-md">
+                        <i class="fa-brands fa-google"></i>
+                      </div>
+                      <p>Continue With Google</p>
+                    </a>
+                  </form>
             </div>
         </div>
       </section>
