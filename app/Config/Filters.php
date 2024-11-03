@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\AlreadyLoggedIn;
+use App\Filters\AuthCheck;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -34,6 +36,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'auth'          => AuthCheck::class,
+        'alreadyLoggedIn' => AlreadyLoggedIn::class,
     ];
 
     /**
@@ -69,6 +73,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            // 'auth' => ['except' => ['account', 'account/*']]
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',

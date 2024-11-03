@@ -15,11 +15,17 @@ class Users extends Model
         'login_method', 
         'oauth_provider_id', 
         'profile', 
+        'rolev', 
         'created_date'
     ];
 
     public function store($data)
     {
         return $this->insert($data);
+    }
+
+    public function getUserByUsername($username)
+    {
+        return $this->where('username', $username)->first();
     }
 }

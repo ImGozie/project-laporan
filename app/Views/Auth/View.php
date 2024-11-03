@@ -27,7 +27,7 @@
         <div class="h-full md:w-1/2 w-full p-3">
             <div class="w-full h-full bg-black rounded-lg flex flex-col justify-center text-center p-6">
                 <h1 class="text-[#F4DFC8] text-2xl my-2 font-semibold">Login</h1>
-                <form action="">
+                <form action="<?= base_url('login/localAuth'); ?>" method="post">
                     <div class="bg-[#F4EAE0] w-full rounded-md my-2 flex overflow-hidden items-center">
                         <label for="username" class="px-3">
                             <i class="fa-solid fa-user opacity-30 text-sm"></i>
@@ -40,7 +40,7 @@
                         </label>
                         <input type="password" id="password" name="password" class="bg-transparent placeholder:text-sm py-2.5 w-full outline-none focus:outline-none text-sm" placeholder="Password">
                     </div>
-                    <button type="Submit" class="duration-150 bg-[#F4DFC8] hover:bg-[#FAF6F0] w-full px-4 py-2 rounded-md my-4">Login</button>
+                    <button type="submit" class="duration-150 bg-[#F4DFC8] hover:bg-[#FAF6F0] w-full px-4 py-2 rounded-md my-4">Login</button>
                     <div class="relative inline-flex items-center justify-center w-full">
                       <hr class="w-full h-px bg-gray-200 border-0 dark:bg-gray-700">
                       <span class="absolute px-3 text-[#F4DFC8] bg-black">or</span>
