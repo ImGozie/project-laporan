@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST</title>
     <link href="<?= base_url('styles/style.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        main {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .fa-solid {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
-<body class="bg-blue-500 text-gray-900 font-sans">
-    <header class="bg-blue-600 text-white shadow">
-        <div class="container mx-auto p-4 flex justify-between items-center">
-            <h1 class="text-xl font-semibold"><a href="<?= base_url('/'); ?>">My Project</a></h1>
-            <nav>
-                <a href="<?= base_url('auth/login'); ?>" class="text-white px-4">Login</a>
-                <a href="<?= base_url('auth/logout'); ?>" class="text-white px-4">Logout</a>
-            </nav>
-        </div>
-    </header>
-    <main class="container mx-auto mt-5 p-4">
+
+<body class="flex">
+    <?= $this->include('components/sidebar'); ?>
+    <main>
