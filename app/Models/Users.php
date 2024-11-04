@@ -15,7 +15,7 @@ class Users extends Model
         'login_method', 
         'oauth_provider_id', 
         'profile', 
-        'rolev', 
+        'role', 
         'created_date'
     ];
 
