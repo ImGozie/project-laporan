@@ -17,7 +17,7 @@
             font-family: "Poppins", sans-serif;
         }
 
-        .fa-solid {
+        .icon-menu > .fa-solid {
             width: 20px;
             height: 20px;
             display: inline-block;
