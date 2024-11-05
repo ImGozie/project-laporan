@@ -4,6 +4,6 @@
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 <script src="<?= base_url('js/alpine.js') ?>" defer></script>
-<script src="node_modules/flowbite/dist/flowbite.min.js"></script>
+<script src="<?= base_url('js/flowbite.js') ?>"></script>
 </body>
 </html>
