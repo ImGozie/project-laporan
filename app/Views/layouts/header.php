@@ -28,10 +28,6 @@
             line-height: 20px;
             text-align: center;
         }
-
-        .transition-radius {
-            transition: border-radius 0.3s ease;
-        }
     </style>
 </head>
 
