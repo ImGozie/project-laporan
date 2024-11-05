@@ -17,13 +17,17 @@
             font-family: "Poppins", sans-serif;
         }
 
-        .icon-menu > .fa-solid {
+        .icon-menu>.fa-solid {
             width: 20px;
             height: 20px;
             display: inline-block;
             font-size: 15px;
             line-height: 20px;
             text-align: center;
+        }
+
+        .transition-radius {
+            transition: border-radius 0.3s ease;
         }
     </style>
 </head>

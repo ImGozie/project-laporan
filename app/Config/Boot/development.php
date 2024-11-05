@@ -13,6 +13,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
+error_reporting(~E_DEPRECATED & ~E_NOTICE);
+ini_set('display_errors', '1');
 /*
  |--------------------------------------------------------------------------
  | DEBUG BACKTRACES
