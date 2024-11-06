@@ -3,25 +3,21 @@
 namespace App\Controllers\Home;
 
 use App\Controllers\BaseController;
+use App\Models\Menu;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Dashboard extends BaseController
 {
-    public function index()
+    public function __construct()
     {
-        $dataMenu = $this->menuJson();
-        $data = [
-            'menu' => json_encode($dataMenu),
-        ];
-        return view('Home/Dashboard', $data);
+        $this->menu = new Menu();
     }
 
-    public function menuJson()
+    public function index()
     {
-        return [
-            ['id' => 1, 'name' => 'dashboard', 'icon' => 'fa-chart-simple', 'url' => '/home'],
-            ['id' => 2, 'name' => 'master data', 'icon' => 'fa-database', 'url' => '/about'],
-            ['id' => 3, 'name' => 'user / siswa', 'icon' => 'fa-users', 'url' => '/contact']
+        $data = [
+            'menu' => json_decode($this->menu->getMenu()),
         ];
+        return view('Home/Dashboard', $data);
     }
 }
