@@ -16,3 +16,8 @@ $routes->group('login', ['filter' => 'alreadyLoggedIn'], function($routes) {
 $routes->get('auth/logout', 'Auth\Authenticator::logoutProcess');
 
 $routes->get('/dashboard', 'Home\Dashboard::index', ['filter' => 'auth']);
+
+$routes->group('users', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Users\Users::index');
+    $routes->get('datatable', 'Users\Users::getUsersData');
+});
