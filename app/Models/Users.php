@@ -28,4 +28,17 @@ class Users extends Model
     {
         return $this->where('username', $username)->first();
     }
+
+    public function getDatatables($length, $start)
+    {
+        // Pastikan limit menerima integer
+        return $this->select('email, username, password, login_method, role')
+                    ->limit($length, $start)
+                    ->findAll();
+    }
+
+    public function countAllData()
+    {
+        return $this->countAllResults();
+    }
 }
