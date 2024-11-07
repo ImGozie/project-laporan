@@ -31,18 +31,18 @@
         }
 
         ::-webkit-scrollbar {
-            width: 4px;
-            border: 1px solid #d5d5d5;
+            width: 2px;
+            height: 3px;
         }
 
         ::-webkit-scrollbar-track {
-            border-radius: 0;
-            background: #eeeeee;
+            border-radius: 10;
+            background: #fff;
         }
 
         ::-webkit-scrollbar-thumb {
             border-radius: 0;
-            background: #b0b0b0;
+            background: #F4DFC8;
         }
     </style>
 </head>
