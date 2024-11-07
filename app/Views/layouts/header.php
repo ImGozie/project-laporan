@@ -25,13 +25,28 @@
         tbody tr:nth-child(odd) {
             background-color: #ffffff;
         }
-        
+
         tbody tr:nth-child(even) {
             background-color: #fdfdfd;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            border: 1px solid #d5d5d5;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 0;
+            background: #eeeeee;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 0;
+            background: #b0b0b0;
         }
     </style>
 </head>
 
 <body class="flex overflow-hidden">
     <?= $this->include('components/sidebar'); ?>
-    <main class="grow">
+    <main class="grow overflow-x-auto">
