@@ -25,57 +25,20 @@ class Users extends BaseController
 
     public function getUsersData()
     {
-        $model = $this->users;
+        $param['draw'] = isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '';
+        $keyword = isset($_REQUEST['search']['value']) ? $_REQUEST['search']['value'] : '';
+        $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : '';
+        $length = isset($_REQUEST['length']) ? $_REQUEST['length'] : '';
+        
+        $data = $this->users->getDatatables($keyword, $start, $length);
+        $total = $this->users->getDatatables($keyword);
 
-        // Ambil parameter dari DataTables
-        $length = (int)$this->request->getVar('length');  // jumlah data per halaman
-        $start = (int)$this->request->getVar('start');    // data yang ditampilkan dimulai dari indeks mana
-        $search = $this->request->getVar('search')['value'];  // nilai pencarian
-        $order = $this->request->getVar('order');  // data sorting
-        $orderColumnIndex = $order[0]['column'];  // kolom yang disortir
-        $orderDirection = $order[0]['dir'];  // arah penyortiran (asc atau desc)
-
-        // Tentukan kolom yang digunakan untuk penyortiran
-        $columns = ['email', 'username'];
-
-        // Jika ada pencarian, filter data berdasarkan pencarian
-        if (!empty($search)) {
-            $model->groupStart();
-            foreach ($columns as $column) {
-                $model->orLike($column, $search);
-            }
-            $model->groupEnd();
-        }
-
-        // Sorting berdasarkan kolom yang dipilih
-        $model->orderBy($columns[$orderColumnIndex], $orderDirection);
-
-        // Ambil data dari model
-        $data = $model->getDatatables($length, $start);
-
-        // Ambil total data
-        $totalData = $model->countAllData();
-        $filteredData = $model->countAllResults();  // Jumlah data setelah difilter oleh pencarian
-
-        // Format data untuk DataTable (dengan total record dan data)
-        $output = [
-            "draw" => intval($this->request->getVar('draw')),
-            "recordsTotal" => $totalData,
-            "recordsFiltered" => $filteredData,
-            "data" => [],
-        ];
-
-        // Proses data agar sesuai dengan format yang diinginkan DataTables
-        foreach ($data as $row) {
-            $output['data'][] = [
-                $row['email'],
-                $row['username'],
-                $row['password'],
-                $row['login_method'],
-                $row['role']
-            ];
-        }
-
-        return $this->response->setJSON($output);
+        $output = array(
+            'draw' => intval($param['draw']),
+            'recordsTotal' => count($total),
+            'recordsFiltered' => count($total),
+            'data' => $data
+        );
+        echo json_encode($output);
     }
 }
