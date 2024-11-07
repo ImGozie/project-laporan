@@ -1,7 +1,7 @@
 <?= $this->include('layouts/header'); ?>
-<section class="p-4 h-screen overflow-auto">
-    <div class="p-4 rounded-lg shadow-md border-gray-300">
-        <table id="selection-table">
+<section class="p-4">
+    <div class="p-4 rounded-lg shadow-md">
+        <table id="selection-table" class="">
             <thead>
                 <tr>
                     <th class="inline-block">
@@ -48,27 +48,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="font-medium text-gray-900 whitespace-nowrap">Superuser</td>
-                    <td>Tenhag@gmail.com</td>
-                    <td>pass world</td>
-                    <td>Local</td>
-                    <td>Admin</td>
-                    <td>$3.04T</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="font-medium text-gray-900 whitespace-nowrap">Admin</td>
-                    <td>Tenhug@gmail.com</td>
-                    <td>pass world</td>
-                    <td>Local</td>
-                    <td>Admin</td>
-                    <td>$3.04T</td>
-                </tr>
             </tbody>
         </table>
     </div>
+    <!-- <table id="usersTable" class="display">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Login Method</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table> -->
 </section>
 <?= $this->include('layouts/footer'); ?>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
@@ -138,38 +132,38 @@
         resetTable();
     }
 
-    // $(document).ready(function() {
-    //     $('#usersTable').DataTable({
-    //         "processing": true,
-    //         "serverSide": true,
-    //         "responsive": true,
-    //         "order": [
-    //             [1, 'asc']
-    //         ],
-    //         "ajax": {
-    //             "url": "<?= site_url('users/datatable') ?>",
-    //             "type": "GET"
-    //         },
-    //         "columns": [{
-    //                 "data": 0
-    //             },
-    //             {
-    //                 "data": 1
-    //             },
-    //             {
-    //                 "data": 2
-    //             },
-    //             {
-    //                 "data": 3
-    //             },
-    //             {
-    //                 "data": 4
-    //             }
-    //         ],
-    //         "columnDefs": [{
-    //             "orderable": false,
-    //             "targets": [2, 3, 4]
-    //         }]
-    //     });
-    // });
+    $(document).ready(function() {
+        $('#usersTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "responsive": true,
+            "order": [
+                [1, 'asc']
+            ],
+            "ajax": {
+                "url": "<?= site_url('users/datatable') ?>",
+                "type": "GET"
+            },
+            "columns": [{
+                    "data": 0
+                },
+                {
+                    "data": 1
+                },
+                {
+                    "data": 2
+                },
+                {
+                    "data": 3
+                },
+                {
+                    "data": 4
+                }
+            ],
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [2, 3, 4]
+            }]
+        });
+    });
 </script>
