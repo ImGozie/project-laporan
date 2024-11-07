@@ -9,13 +9,13 @@ class Users extends Model
     protected $table = 'users';
 
     protected $allowedFields = [
-        'username', 
-        'password', 
-        'email', 
-        'login_method', 
-        'oauth_provider_id', 
-        'profile', 
-        'role', 
+        'username',
+        'password',
+        'email',
+        'login_method',
+        'oauth_provider_id',
+        'profile',
+        'role',
         'created_date'
     ];
 
@@ -29,12 +29,23 @@ class Users extends Model
         return $this->where('username', $username)->first();
     }
 
-    public function getDatatables($length, $start)
+    public function getDatatables($keyword = null, $start = 0, $length = 0)
     {
-        // Pastikan limit menerima integer
-        return $this->select('email, username, password, login_method, role')
-                    ->limit($length, $start)
-                    ->findAll();
+        $builder = $this->db->table('users');
+        if ($keyword) {
+            $spaceFilter = explode(' ', $keyword);
+            $columns = ['email', 'username'];
+
+            foreach ($spaceFilter as $filter) {
+                foreach ($columns as $column) {
+                    $builder = $builder->orLike($column, $filter);
+                }
+            }
+        }
+        if (!empty($start) || !empty($length)) {
+            $builder = $builder->limit($length, $start);
+        }
+        return $builder->get()->getResult();
     }
 
     public function countAllData()
