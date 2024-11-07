@@ -1,6 +1,6 @@
 <?= $this->include('layouts/header'); ?>
 <section class="p-4">
-    <div class="p-4 rounded-lg shadow-md">
+    <div class="p-4 rounded-lg shadow-md overflow-x-auto max-w-full">
         <table id="selection-table" class="">
             <thead>
                 <tr>
