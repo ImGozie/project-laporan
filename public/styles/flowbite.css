@@ -811,11 +811,11 @@ input:checked + .toggle-bg {
 .datatable-wrapper .datatable-search .datatable-input {
   background-color: #f9fafb;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   color: #111827;
-  font-size: 0.875rem;
-  min-width: 16rem;
-  padding: 5px 10px;
+  font-size: 0.775rem;
+  min-width: 12rem;
+  padding: 3px 8px;
 }
 .dark .datatable-wrapper .datatable-input,
 .dark .datatable-wrapper .datatable-search .datatable-input {
@@ -838,7 +838,7 @@ input:checked + .toggle-bg {
 }
 .datatable-wrapper .datatable-top .datatable-dropdown {
   color: #6b7280;
-  font-size: 0.875rem;
+  font-size: 0.775rem;
 }
 .dark .datatable-wrapper .datatable-top .datatable-dropdown {
   color: #9ca3af;
@@ -846,12 +846,12 @@ input:checked + .toggle-bg {
 .datatable-wrapper .datatable-top .datatable-dropdown .datatable-selector {
   background-color: #f9fafb;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   color: #111827;
-  font-size: 0.875rem;
+  font-size: 0.775rem;
   margin-right: 0.25rem;
-  padding: 5px 10px;
-  min-width: 4rem;
+  padding: 3px 6px;
+  min-width: 3rem;
 }
 .dark
   .datatable-wrapper
