@@ -1,4 +1,4 @@
-<aside x-data="{ isOpen: true }" >
+<aside x-data="{ isOpen: false }" >
     <nav x-bind:class="isOpen ? 'w-60' : 'w-[60px]'" class="duration-300 bg-[#FAF6F0] fixed h-screen drop-shadow-md">
         <div class="flex w-full h-[60px] p-1">
             <div x-bind:class="isOpen ? 'bg-[#F4DFC8]' : 'bg-transparent'" class="relative flex px-4 h-full w-full rounded-md items-center font-semibold">
@@ -50,7 +50,7 @@
                     class="img-container h-10 w-10 flex-shrink-0 border-[1px] border-stone-400 rounded-full bg-white"
                 >
                     <div class="rounded-full overflow-hidden border-[2px] border-white">
-                        <img src="<?= session()->get('profile') ? session()->get('profile') : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'; ?>">
+                        <img src="<?= session()->get('profile')?>" loading="lazy" onerror="this.onerror=null; this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';">
                     </div>
                 </div>
                 <p x-bind:class="isOpen ? '' : 'hidden'" class="max-w-32 flex flex-col justify-center tracking-tight text-stone-800">
