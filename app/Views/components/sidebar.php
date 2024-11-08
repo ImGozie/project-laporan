@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="mt-3 px-2">
-            <ul class="flex flex-col gap-2 *:text-gray-900 *:text-sm">
+            <ul class="flex flex-col gap-2 *:text-black *:text-sm">
                 <?php
                     foreach ($menu as $arr) : 
                 ?>
@@ -31,7 +31,7 @@
                             </div>
                             <p x-bind:class="isOpen ? '' : 'max-w-0'" class="duration-150 overflow-hidden whitespace-pre capitalize"><?= $arr->name ?></p>
                             <div x-bind:class="isOpen ? 'opacity-0' : 'opacity-100'" class="duration-200 absolute w-2 h-2.5 group-hover:h-8 bg-black rounded-full top-1/2 -translate-y-1/2 -left-3.5 group-hover:-left-3"></div>
-                            <div x-show="!isOpen" class="duration-300 w-0 group-hover:w-fit opacity-0 group-hover:opacity-100 absolute rounded-lg group-hover:px-3 group-hover:py-2 left-14 text-white whitespace-pre bg-gray-900 capitalize overflow-hidden"><?= $arr->name ?></div>
+                            <div x-show="!isOpen" class=" duration-300 w-0 group-hover:w-fit opacity-0 group-hover:opacity-100 absolute rounded-lg group-hover:px-3 group-hover:py-2 left-14 text-white whitespace-pre bg-gray-900 capitalize overflow-hidden"><?= $arr->name ?></div>
                         </a>
                     </li>
                 <?php endforeach; ?>
