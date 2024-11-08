@@ -23,6 +23,7 @@
                 processing: true,
                 serverSide: true
             });
+            $('#dt-search-0').attr('placeholder', 'Search...');
         });
     </script>
 </body>
