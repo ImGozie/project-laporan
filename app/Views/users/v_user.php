@@ -8,7 +8,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Login Method</th>
+                    <th>Login_Method</th>
                     <th>Role</th>
                 </tr>
             </thead>
