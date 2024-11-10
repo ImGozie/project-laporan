@@ -6,34 +6,40 @@ use CodeIgniter\Database\ConnectionInterface;
 
 class DatatableHelper
 {
-    public static function getDatatablesAndTotal($table, $keyword = null, $start = 0, $length = 0, $order = null, $searchable = [], $orderBy = [] ) 
+    public static function getDatatablesAndTotal($builder, $config, $params)
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table($table);
-        // search
+        $keyword = $params['keyword'];
+        $start = $params['start'];
+        $length = $params['length'];
+        $order = $params['order'];
+
+        // Searching
         if ($keyword) {
-            $spaceFilter = explode(' ', $keyword);
-            foreach ($spaceFilter as $filter) {
-                foreach ($searchable as $column) {
-                    $builder = $builder->orLike($column, $filter);
-                }
+            $builder->groupStart();
+            foreach ($config['searchable'] as $column) {
+                $builder->orLike($column, $keyword);
             }
+            $builder->groupEnd();
         }
-        // ordering
-        if ($order && isset($order['column']) && isset($order['dir'])) {
-            $columnIndex = $order['column'];
-            $direction = $order['dir'];
-            $builder->orderBy($orderBy[$columnIndex] ?? '', $direction);
+
+        // Sorting
+        if ($order && isset($order['column'], $order['dir'])) {
+            $columns = $config['orderBy'];
+            $builder->orderBy($columns[$order['column']], $order['dir']);
         }
-        // Pagination: limit dan offset
+
+        // Pagination
         if (!empty($start) || !empty($length)) {
-            $builder = $builder->limit($length, $start);
+            $builder->limit($length, $start);
         }
+
+        // Eksekusi Query
         $data = $builder->get()->getResult();
-        $total = $builder->countAllResults();
+        $total = $builder->countAllResults(false);
+
         return [
             'data' => $data,
-            'total' => $total
+            'total' => $total,
         ];
     }
 }
