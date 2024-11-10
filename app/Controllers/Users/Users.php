@@ -5,6 +5,7 @@ namespace App\Controllers\Users;
 use App\Controllers\BaseController;
 use App\Models\Menu;
 use App\Models\Users as ModelsUsers;
+use App\Helpers\DatatableHelper;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Users extends BaseController
@@ -29,15 +30,27 @@ class Users extends BaseController
         $keyword = isset($_REQUEST['search']['value']) ? $_REQUEST['search']['value'] : '';
         $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : '';
         $length = isset($_REQUEST['length']) ? $_REQUEST['length'] : '';
+        $order = $_REQUEST['order'][0] ?? null;
         
-        $data = $this->users->getDatatables($keyword, $start, $length);
-        $total = $this->users->getDatatables($keyword);
+        $searchable = ['username', 'email', 'password', 'login_method', 'role'];
+        $orderBy = ['userid', 'username', 'email', 'password', 'login_method', 'role'];
+
+        $table_selected = 'users';
+        $result = DatatableHelper::getDatatablesAndTotal(
+            $table_selected,
+            $keyword,
+            $start,
+            $length,
+            $order,
+            $searchable,
+            $orderBy
+        );
 
         $output = array(
             'draw' => intval($param['draw']),
-            'recordsTotal' => count($total),
-            'recordsFiltered' => count($total),
-            'data' => $data
+            'recordsTotal' => $result['total'],
+            'recordsFiltered' => $result['total'],
+            'data' => $result['data']
         );
         echo json_encode($output);
     }
