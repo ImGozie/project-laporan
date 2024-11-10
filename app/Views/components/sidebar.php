@@ -73,16 +73,16 @@
         </div>
     </nav>
     <!-- tooltip sidebar toggle -->
-    <div id="tooltip-toggle" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+    <div id="tooltip-toggle" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
         <span class="whitespace-pre" x-text="isOpen ? 'Close Sidebar' : 'Open Sidebar'"></span>
     </div>
     <!-- tooltip sidebar footer -->
-    <div x-show="!isOpen" id="tooltip-right" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+    <div x-show="!isOpen" id="tooltip-right" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
         <span class="whitespace-pre">Account</span>
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
     <!-- tooltip logout -->
-    <div x-show="isOpen" id="tooltip-logout" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+    <div x-show="isOpen" id="tooltip-logout" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-normal text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
         <span class="whitespace-pre">Logout</span>
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
