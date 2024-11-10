@@ -10,6 +10,7 @@
                     <th>Password</th>
                     <th>Login_Method</th>
                     <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody></tbody>
