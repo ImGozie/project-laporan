@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Menu;
 use App\Models\Users as ModelsUsers;
 use App\Helpers\DatatableHelper;
+use App\Helpers\RequestHelper;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Users extends BaseController
@@ -26,28 +27,17 @@ class Users extends BaseController
 
     public function getUsersData()
     {
-        $param['draw'] = isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '';
-        $keyword = isset($_REQUEST['search']['value']) ? $_REQUEST['search']['value'] : '';
-        $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : '';
-        $length = isset($_REQUEST['length']) ? $_REQUEST['length'] : '';
-        $order = $_REQUEST['order'][0] ?? null;
+        $builder = $this->users->datatables();
+        $config = $this->users->getTableConfig();
+        $params = RequestHelper::getDatatableRequest();
         
-        $searchable = ['username', 'email', 'password', 'login_method', 'role'];
-        $orderBy = ['userid', 'username', 'email', 'password', 'login_method', 'role'];
-
-        $table_selected = 'users';
         $result = DatatableHelper::getDatatablesAndTotal(
-            $table_selected,
-            $keyword,
-            $start,
-            $length,
-            $order,
-            $searchable,
-            $orderBy
+            $builder,
+            $config,
+            $params
         );
-
         $output = array(
-            'draw' => intval($param['draw']),
+            'draw' => intval($params['draw']),
             'recordsTotal' => $result['total'],
             'recordsFiltered' => $result['total'],
             'data' => $result['data']
