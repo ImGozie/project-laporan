@@ -187,8 +187,8 @@ div.dt-processing > div:last-child > div {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: rgb(13, 110, 253);
-  background: rgb(var(--dt-row-selected));
+  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 div.dt-processing > div:last-child > div:nth-child(1) {
@@ -760,7 +760,6 @@ html.dark .dt-container .dt-length select {
     display: none;
   }
 }
-
 
 .dt-length {
   display: flex;
