@@ -29,27 +29,33 @@ class Users extends Model
         return $this->where('username', $username)->first();
     }
 
-    public function getDatatables($keyword = null, $start = 0, $length = 0)
-    {
-        $builder = $this->db->table('users');
-        if ($keyword) {
-            $spaceFilter = explode(' ', $keyword);
-            $columns = ['email', 'username'];
+    // public function getDatatables($keyword = null, $start = 0, $length = 0 , $order = null, $searchable = [], $orderBy = [])
+    // {
+    //     $builder = $this->db->table('users');
+    //     if ($keyword) {
+    //         $spaceFilter = explode(' ', $keyword);
+    //         $columns = $searchable;
 
-            foreach ($spaceFilter as $filter) {
-                foreach ($columns as $column) {
-                    $builder = $builder->orLike($column, $filter);
-                }
-            }
-        }
-        if (!empty($start) || !empty($length)) {
-            $builder = $builder->limit($length, $start);
-        }
-        return $builder->get()->getResult();
-    }
+    //         foreach ($spaceFilter as $filter) {
+    //             foreach ($columns as $column) {
+    //                 $builder = $builder->orLike($column, $filter);
+    //             }
+    //         }
+    //     }
+    //     if ($order && isset($order['column']) && isset($order['dir'])) {
+    //         $columns = $orderBy;
+    //         $columnIndex = $order['column'];
+    //         $direction = $order['dir'];
+    //         $builder->orderBy($columns[$columnIndex], $direction);
+    //     }
+    //     if (!empty($start) || !empty($length)) {
+    //         $builder = $builder->limit($length, $start);
+    //     }
+    //     return $builder->get()->getResult();
+    // }
 
-    public function countAllData()
-    {
-        return $this->countAllResults();
-    }
+    // public function countAllData()
+    // {
+    //     return $this->countAllResults();
+    // }
 }
