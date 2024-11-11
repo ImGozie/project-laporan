@@ -36,6 +36,12 @@ class Users extends BaseController
             $config,
             $params
         );
+        foreach ($result['data'] as &$row) {
+            $row->action = '
+                <a href="' . site_url('users/edit/' . $row->userid) . '" class="btn btn-sm btn-primary">Edit</a>
+                <button class="btn btn-sm btn-danger delete-btn" data-id="' . $row->userid . '">Delete</button>
+            ';
+        }
         $output = array(
             'draw' => intval($params['draw']),
             'recordsTotal' => $result['total'],
