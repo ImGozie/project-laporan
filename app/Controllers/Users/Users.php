@@ -30,7 +30,7 @@ class Users extends BaseController
         $builder = $this->users->datatables();
         $config = $this->users->getTableConfig();
         $params = RequestHelper::getDatatableRequest();
-        
+
         $result = DatatableHelper::getDatatablesAndTotal(
             $builder,
             $config,
@@ -38,8 +38,16 @@ class Users extends BaseController
         );
         foreach ($result['data'] as &$row) {
             $row->action = '
-                <a href="' . site_url('users/edit/' . $row->userid) . '" class="btn btn-sm btn-primary">Edit</a>
-                <button class="btn btn-sm btn-danger delete-btn" data-id="' . $row->userid . '">Delete</button>
+                <div class="whitespace-nowrap">
+                    <a href="' . site_url('users/edit/' . $row->userid) . '" class="text-center bg-yellow-500 py-2 px-1.5 !text-[#F4DFC8] rounded-md mr-1">
+                        <span">
+                            <i class="fa-solid fa-pen ml-[3px]"></i>
+                        </span>
+                    </a>
+                    <button class="bg-red-500 py-2 px-2 text-[#F4DFC8] rounded-md" data-id="' . $row->userid . '">
+                        <i class="fa-solid fa-trash mx-0.5"></i>
+                    </button>
+                </div>
             ';
         }
         $output = array(
