@@ -23,7 +23,7 @@
                 { data: 'password' },
                 { data: 'login_method' },
                 { data: 'role' },
-                { data: 'action', orderable: false, searchable: false },
+                { data: 'action', orderable: false, searchable: false, className: '!text-center' },
             ],
             processing: true,
             serverSide: true,
