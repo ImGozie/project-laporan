@@ -36,20 +36,18 @@ class Users extends BaseController
             $config,
             $params
         );
-        foreach ($result['data'] as &$row) {
+        array_map(function($row) {
             $row->action = '
                 <div class="whitespace-nowrap">
                     <a href="' . site_url('users/edit/' . $row->userid) . '" class="text-center bg-yellow-500 py-2 px-1.5 !text-[#F4DFC8] rounded-md mr-1">
-                        <span">
+                        <span>
                             <i class="fa-solid fa-pen ml-[3px]"></i>
                         </span>
                     </a>
-                    <button class="bg-red-500 py-2 px-2 text-[#F4DFC8] rounded-md" data-id="' . $row->userid . '">
-                        <i class="fa-solid fa-trash mx-0.5"></i>
-                    </button>
+                    <button class="bg-red-500 py-2 px-2 text-[#F4DFC8] rounded-md" data-id="' . $row->userid . '"><i class="fa-solid fa-trash mx-0.5"></i></button>
                 </div>
             ';
-        }
+        }, $result['data']);
         $output = array(
             'draw' => intval($params['draw']),
             'recordsTotal' => $result['total'],
