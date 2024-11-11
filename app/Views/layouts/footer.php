@@ -15,21 +15,22 @@
                     data: null,
                     render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
-                    }
+                    },
+                    className: '!text-center font-semibold'
                 },
                 { data: 'username' },
                 { data: 'email' },
                 { data: 'password' },
                 { data: 'login_method' },
                 { data: 'role' },
-                { data: 'role' },
+                { data: 'action', orderable: false, searchable: false },
             ],
             processing: true,
             serverSide: true,
             order: [[5, 'ASC']],
-            columnDefs: [
-                { targets: 0, className: '!text-center' }
-            ],
+            // columnDefs: [
+            //     { targets: 0, className: '!text-center font-semibold' }
+            // ],
             });
         $('#dt-search-0').attr('placeholder', 'Search...');
     });
