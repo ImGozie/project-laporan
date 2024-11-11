@@ -4,11 +4,11 @@
         <table id="usersTable">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Login_Method</th>
+                    <th>Login Method</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
