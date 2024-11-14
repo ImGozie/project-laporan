@@ -1,5 +1,6 @@
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="<?= base_url('js/tailwindConfig.js') ?>"></script>
 <!-- Flowbite CSS -->
 <link href="<?= base_url('styles/flowbite.css'); ?>" rel="stylesheet">
 <!-- Flowbite Tooltip (Arrow) -->
