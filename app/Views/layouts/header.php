@@ -50,6 +50,6 @@
 <body class="flex overflow-hidden">
     <?= $this->include('components/sidebar'); ?>
     <main class="grow overflow-x-auto px-4 py-1">
-        <header class="w-full h-[52px] shadow-sm flex items-center rounded-md bg-[#FAF6F0]">
+        <!-- <header class="w-full h-[52px] shadow-sm flex items-center rounded-md bg-[#FAF6F0]">
             something
-        </header>
+        </header> -->
