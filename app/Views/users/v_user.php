@@ -2,7 +2,7 @@
 <section class="mt-4">
     <div class="px-4 rounded-lg shadow-md overflow-x-auto max-w-full">
         <div class="flex gap-2 justify-end py-4 border-b-2 border-gray-200">
-            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="text-[0.8rem] bg-black hover:bg-gray-800 duration-150 text-[#F4DFC8] py-2 px-3 font-[500] rounded-md">
+            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="text-[0.8rem] bg-gozi-500 hover:bg-gozi-600 duration-150 text-[#F4DFC8] py-2 px-3 font-[500] rounded-md">
                 <i class="fa-solid fa-plus"></i>
                 Add New
             </button>
