@@ -44,6 +44,10 @@ html.dark table.dataTable tr.dt-hasChild td.dt-control:before,
   border-left-color: transparent;
 }
 
+.dt-column-title {
+  color: #162455;
+}
+
 div.dt-scroll {
   width: 100%;
 }
@@ -75,7 +79,7 @@ table.dataTable thead > tr > td:active {
 table.dataTable thead > tr > th:first-child,
 table.dataTable thead > tr > td:first-child {
   padding: 0px 6px !important;
-  background-color: #f3e5d6c9 !important;
+  background-color: #dbeafe !important;
   span.dt-column-order{
     display: none;
   }
@@ -357,7 +361,7 @@ table.dataTable tfoot th {
 table.dataTable > thead > tr > th,
 table.dataTable > thead > tr > td {
   padding: 10px;
-  background-color: #FAF6F0;
+  background-color: #eff6ff;
 }
 table.dataTable > thead > tr > th:active,
 table.dataTable > thead > tr > td:active {
@@ -400,7 +404,7 @@ table.dataTable > tbody > tr > th,
 table.dataTable > tbody > tr > td {
   padding: 10px 10px;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.5);
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
 }
 table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
@@ -657,14 +661,7 @@ div.dt-container .dt-paging .dt-paging-button.current, div.dt-container .dt-pagi
   color: #FAF6F0 !important;
   border-radius: 5px;
   font-size: smaller !important;
-  background-color: #000 !important;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(230, 230, 230, 0.05)), color-stop(100%, rgba(0, 0, 0, 0.05))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(230, 230, 230, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, rgba(230, 230, 230, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(top, rgba(230, 230, 230, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%); /* IE10+ */
-  background: -o-linear-gradient(top, rgba(230, 230, 230, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, rgba(230, 230, 230, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%); /* W3C */
+  background-color: #3f83f8 !important;
 }
 div.dt-container .dt-paging .dt-paging-button.disabled, div.dt-container .dt-paging .dt-paging-button.disabled:hover, div.dt-container .dt-paging .dt-paging-button.disabled:active {
   cursor: default;
@@ -675,25 +672,9 @@ div.dt-container .dt-paging .dt-paging-button.disabled, div.dt-container .dt-pag
 }
 div.dt-container .dt-paging .dt-paging-button:hover {
   color: white !important;
-  border: 1px solid #111;
-  background-color: #111;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #585858 0%, #111 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, #585858 0%, #111 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(top, #585858 0%, #111 100%); /* IE10+ */
-  background: -o-linear-gradient(top, #585858 0%, #111 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, #585858 0%, #111 100%); /* W3C */
 }
 div.dt-container .dt-paging .dt-paging-button:active {
   outline: none;
-  background-color: #0c0c0c;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%); /* IE10+ */
-  background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%); /* W3C */
-  box-shadow: inset 0 0 3px #111;
 }
 div.dt-container .dt-paging .ellipsis {
   padding: 0 1em;
@@ -705,7 +686,7 @@ div.dt-container .dt-processing,
 div.dt-container .dt-paging {
   color: inherit;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.5);
 }
 div.dt-container .dataTables_scroll {
   clear: both;
