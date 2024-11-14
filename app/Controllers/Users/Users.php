@@ -38,15 +38,20 @@ class Users extends BaseController
         );
         array_map(function($row) {
             $row->action = '
-                <div class="whitespace-nowrap">
-                    <a href="' . site_url('users/edit/' . $row->userid) . '" class="text-center bg-yellow-500 py-2 px-1.5 !text-[#F4DFC8] rounded-md mr-1">
+                <div class="flex whitespace-nowrap items-center justify-center">
+                    <a href="' . site_url('users/edit/' . $row->userid) . '" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600  min-w-7 min-h-8 !text-[#F4DFC8] rounded-md mr-1">
                         <span>
-                            <i class="fa-solid fa-pen ml-[3px]"></i>
+                            <i class="fa-solid fa-pen"></i>
                         </span>
                     </a>
-                    <button class="bg-red-500 py-2 px-2 text-[#F4DFC8] rounded-md" data-id="' . $row->userid . '"><i class="fa-solid fa-trash mx-0.5"></i></button>
+                    <button class="bg-red-500 hover:bg-red-600 min-w-7 min-h-8 text-[#F4DFC8] rounded-md" data-id="' . $row->userid . '"><i class="fa-solid fa-trash mx-0.5"></i></button>
                 </div>
             ';
+            if ($row->role === 'admin') {
+                $row->role = '<span class="inline-flex bg-blue-100 text-gray-500 shadow-md min-w-14 min-h-7 items-center justify-center rounded-md">Admin</span>';
+            } else {
+                $row->role = '<span class="inline-flex bg-blue-50 text-gray-500 shadow-md min-w-14 min-h-7 items-center justify-center rounded-md">User</span>';
+            }
         }, $result['data']);
         $output = array(
             'draw' => intval($params['draw']),
