@@ -1,5 +1,5 @@
 <aside x-data="{ isOpen: false }" >
-    <nav x-bind:class="isOpen ? 'w-60' : 'w-[60px]'" class="z-50 duration-300 bg-[#FAF6F0] fixed h-screen drop-shadow-md">
+    <nav x-bind:class="isOpen ? 'w-60' : 'w-[60px]'" class="z-40 duration-300 bg-[#FAF6F0] fixed h-screen drop-shadow-md">
         <div class="flex w-full h-[60px] p-1">
             <div x-bind:class="isOpen ? 'bg-[#F4DFC8]' : 'bg-transparent'" class="relative flex px-4 h-full w-full rounded-md items-center font-semibold">
                 <div x-bind:class="isOpen ? 'block' : 'hidden'">
