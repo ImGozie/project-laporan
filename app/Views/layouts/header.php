@@ -42,7 +42,7 @@
 
         ::-webkit-scrollbar-thumb {
             border-radius: 0;
-            background: #F4DFC8;
+            background: #92c4fe;
         }
     </style>
 </head>
