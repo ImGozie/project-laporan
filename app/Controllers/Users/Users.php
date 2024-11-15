@@ -25,6 +25,10 @@ class Users extends BaseController
         return view('users/v_user', $data);
     }
 
+    public function forms()
+    {
+        return view('users/form');
+    }
     public function getUsersData()
     {
         $builder = $this->users->datatables();
@@ -48,9 +52,9 @@ class Users extends BaseController
                 </div>
             ';
             if ($row->role === 'admin') {
-                $row->role = '<span class="inline-flex bg-gozi-400 text-gozi-50 shadow-md min-w-14 min-h-7 items-center justify-center rounded-md">Admin</span>';
+                $row->role = '<span class="inline-flex bg-gozi-100 text-gray-500 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">Admin</span>';
             } else {
-                $row->role = '<span class="inline-flex bg-gozi-100 text-gozi-500 shadow-md min-w-14 min-h-7 items-center justify-center rounded-md">User</span>';
+                $row->role = '<span class="inline-flex bg-gozi-50 text-gray-500 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">User</span>';
             }
         }, $result['data']);
         $output = array(
