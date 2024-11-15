@@ -1,9 +1,14 @@
-<aside x-data="{ isOpen: true }" >
+<aside x-data="{ isOpen: false }" >
     <nav x-bind:class="isOpen ? 'w-60' : 'w-[64px]'" class="z-40 duration-300 border-2 border-gray-100 fixed h-screen">
         <div class="flex w-full h-[60px] p-1">
-            <div x-bind:class="isOpen ? 'bg-gozi-50' : 'bg-transparent'" class="relative overflow-hidden flex px-4 h-full w-full rounded-md items-center font-semibold">
+            <div x-bind:class="isOpen ? 'bg-gozi-100' : 'bg-transparent'" class="relative overflow-hidden flex px-4 h-full w-full rounded-md items-center font-semibold">
                 <div x-bind:class="isOpen ? 'block' : 'hidden'">
-                    <i class="fa-solid fa-graduation-cap !text-lg text-gozi-950"></i>
+                    <img 
+                        class="w-10 mix-blend-multiply object-contain image-rendering-crisp"
+                        style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" 
+                        src="<?= base_url('assets/img/BKI-orange.jpg'); ?>" 
+                        alt="BKI-Logo"
+                    >
                 </div>
                  <button 
                     data-tooltip-target="tooltip-toggle" 
@@ -16,7 +21,7 @@
             </div>
         </div>
         <div class="mt-3 px-2">
-            <ul class="flex flex-col gap-2 *:text-gozi-950 *:text-sm">
+            <ul class="flex flex-col gap-2 *:text-gray-800 *:text-sm">
                 <?php
                     foreach ($menu as $arr) : 
                 ?>
@@ -41,7 +46,7 @@
             <section 
                 data-tooltip-target="tooltip-right" 
                 data-tooltip-placement="right"
-                x-bind:class="isOpen ? 'bg-gozi-50' : 'bg-transparent'" 
+                x-bind:class="isOpen ? 'bg-gozi-100' : 'bg-transparent'" 
                 class="flex h-full rounded-lg px-1.5 py-2 gap-2 drop-shadow-sm"
             >
                 <div 
