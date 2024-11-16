@@ -20,21 +20,14 @@
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script>
     $(document).ready(function() {
-        function openModal(modalTitle, formUrl) {
-            $('#modal-title').text(modalTitle);
-
-            $('#modal-body').load(formUrl, function() {
-                $('#crud-modal').removeClass('hidden').addClass('flex');
-            });
-        }
-
-        $('.modal-trigger').on('click', function() {
-            const title = $(this).data('title');
-            const formUrl = $(this).data('url');
-
-            openModal(title, formUrl);
-        });
     });
+    function openModal(modalTitle, formUrl) {
+        $('#modal-title').text(modalTitle);
+
+        $('#modal-body').load(formUrl, function() {
+            $('#crud-modal').removeClass('hidden').addClass('flex');
+        });
+    }
 </script>
 </body>
 
