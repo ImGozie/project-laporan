@@ -21,4 +21,5 @@ $routes->group('users', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Users\Users::index');
     $routes->get('datatable', 'Users\Users::getUsersData');
     $routes->get('form', 'Users\Users::forms');
+    $routes->get('form/(:any)', 'Users\Users::forms/$1');
 });
