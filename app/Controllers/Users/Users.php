@@ -25,7 +25,7 @@ class Users extends BaseController
         return view('users/v_user', $data);
     }
 
-    public function forms()
+    public function forms($id)
     {
         return view('users/form');
     }
@@ -43,18 +43,18 @@ class Users extends BaseController
         array_map(function($row) {
             $row->action = '
                 <div class="flex whitespace-nowrap items-center justify-center">
-                    <a href="' . site_url('users/edit/' . $row->userid) . '" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
+                    <button onclick="openModal(\'Edit User\', \'' . site_url('users/form/' . $row->userid) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
                         <span>
                             <i class="fa-solid fa-pen"></i>
                         </span>
-                    </a>
+                    </button>
                     <button class="min-w-7 min-h-8 text-gozi-950 rounded-r-lg" data-id="' . $row->userid . '"><i class="fa-solid fa-trash mx-0.5"></i></button>
                 </div>
             ';
             if ($row->role === 'admin') {
-                $row->role = '<span class="inline-flex bg-gozi-100 text-gray-500 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">Admin</span>';
+                $row->role = '<span class="inline-flex bg-gozi-400 text-gray-50 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">Admin</span>';
             } else {
-                $row->role = '<span class="inline-flex bg-gozi-50 text-gray-500 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">User</span>';
+                $row->role = '<span class="inline-flex bg-gozi-100 text-gray-500 text-[0.65rem] border-[1px] border-gozi-100 min-w-14 min-h-7 items-center justify-center rounded-md">User</span>';
             }
         }, $result['data']);
         $output = array(
