@@ -43,7 +43,7 @@ class Users extends BaseController
         array_map(function($row) {
             $row->action = '
                 <div class="flex whitespace-nowrap items-center justify-center">
-                    <button onclick="openModal(\'Edit User\', \'' . site_url('users/form/' . $row->userid) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
+                    <button onclick="openModal(\'Edit User - ' . $row->username . '\', \'' . site_url('users/form/' . $row->userid) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
                         <span>
                             <i class="fa-solid fa-pen"></i>
                         </span>
