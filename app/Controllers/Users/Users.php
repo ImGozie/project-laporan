@@ -8,9 +8,7 @@ use App\Models\Users as ModelsUsers;
 use App\Helpers\DatatableHelper;
 use App\Helpers\RequestHelper;
 use CodeIgniter\HTTP\ResponseInterface;
-
-use function App\Helpers\SecretKey\decrypting;
-use function App\Helpers\SecretKey\encrypting;
+require_once APPPATH . 'Helpers/EncryptionHelper.php';
 
 class Users extends BaseController
 {
@@ -30,7 +28,6 @@ class Users extends BaseController
 
     public function forms($id = '')
     {
-        helper('encryption');
         $formType = (empty($id) ? 'add' : 'edit');
         if (isset($id)) decrypting($id);
         return view('users/form', [
