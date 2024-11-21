@@ -29,9 +29,11 @@ class Users extends BaseController
     public function forms($id = '')
     {
         $formType = (empty($id) ? 'add' : 'edit');
-        if (isset($id)) decrypting($id);
+        if ($id != '') $id = decrypting($id);
         return view('users/form', [
-            'formType' => $formType
+            'id' => $id,
+            'formType' => $formType,
+            'res' => $this->users->getOne($id),
         ]);
     }
     

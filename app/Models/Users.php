@@ -43,6 +43,12 @@ class Users extends Model
         ];
     }
 
+    public function getOne($id = '')
+    {
+        $x = $this->builder;
+        if ($id != '') $x->where('id', $id);
+        return $x->get()->getRow();
+    }
     // public function getDatatables($keyword = null, $start = 0, $length = 0 , $order = null, $searchable = [], $orderBy = [])
     // {
     //     $builder = $this->db->table('users');
