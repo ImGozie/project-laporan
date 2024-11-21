@@ -4,8 +4,6 @@
         <div class="flex gap-2 justify-end py-4 border-b-2 border-gray-200">
             <button
                 onclick="openModal('Add New User', '<?= site_url('users/form'); ?>')"
-                data-modal-target="crud-modal" 
-                data-modal-toggle="crud-modal" 
                 class="text-[0.8rem] bg-gozi-700 hover:bg-gozi-500 duration-150 text-[#F4DFC8] py-2 px-3 font-[500] rounded-md"
             >
                 <i class="fa-solid fa-plus"></i>
