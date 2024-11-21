@@ -1,6 +1,6 @@
 <?= $this->include('layouts/header'); ?>
 <section class="mt-4">
-    <div class="px-4 rounded-lg shadow-md overflow-x-auto max-w-full">
+    <div class="px-4 rounded-lg shadow-[1px_5px_20px_-5px_#00000024] overflow-x-auto max-w-full">
         <div class="flex gap-2 justify-end py-4 border-b-2 border-gray-200">
             <button
                 data-title="Add New User"
