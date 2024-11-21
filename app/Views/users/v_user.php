@@ -1,6 +1,6 @@
 <?= $this->include('layouts/header'); ?>
 <section class="mt-4">
-    <div class="px-4 rounded-lg shadow-[1px_5px_20px_-5px_#00000024] overflow-x-auto max-w-full">
+    <div class="px-4 rounded-lg border-2 shadow-[1px_2px_10px_0px_#00000020] overflow-x-auto max-w-full">
         <div class="flex gap-2 justify-end py-4 border-b-2 border-gray-200">
             <button
                 onclick="openModal('Add New User', '<?= site_url('users/form'); ?>')"
