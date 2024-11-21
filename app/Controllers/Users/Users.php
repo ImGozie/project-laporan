@@ -9,6 +9,9 @@ use App\Helpers\DatatableHelper;
 use App\Helpers\RequestHelper;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use function App\Helpers\SecretKey\decrypting;
+use function App\Helpers\SecretKey\encrypting;
+
 class Users extends BaseController
 {
     public function __construct()
@@ -25,10 +28,16 @@ class Users extends BaseController
         return view('users/v_user', $data);
     }
 
-    public function forms($id)
+    public function forms($id = '')
     {
-        return view('users/form');
+        helper('encryption');
+        $formType = (empty($id) ? 'add' : 'edit');
+        if (isset($id)) decrypting($id);
+        return view('users/form', [
+            'formType' => $formType
+        ]);
     }
+    
     public function getUsersData()
     {
         $builder = $this->users->datatables();
@@ -43,7 +52,7 @@ class Users extends BaseController
         array_map(function($row) {
             $row->action = '
                 <div class="flex whitespace-nowrap items-center justify-center">
-                    <button onclick="openModal(\'Edit User - ' . $row->username . '\', \'' . site_url('users/form/' . $row->userid) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
+                    <button onclick="openModal(\'Edit User - ' . $row->username . '\', \'' . site_url('users/form/' . encrypting($row->userid)) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
                         <span>
                             <i class="fa-solid fa-pen"></i>
                         </span>
