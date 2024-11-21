@@ -3,11 +3,10 @@
     <div class="px-4 rounded-lg shadow-[1px_5px_20px_-5px_#00000024] overflow-x-auto max-w-full">
         <div class="flex gap-2 justify-end py-4 border-b-2 border-gray-200">
             <button
-                data-title="Add New User"
-                data-url="<?= site_url('users/form'); ?>" 
+                onclick="openModal('Add New User', '<?= site_url('users/form'); ?>')"
                 data-modal-target="crud-modal" 
                 data-modal-toggle="crud-modal" 
-                class="modal-trigger text-[0.8rem] bg-gozi-500 hover:bg-gozi-600 duration-150 text-[#F4DFC8] py-2 px-3 font-[500] rounded-md"
+                class="text-[0.8rem] bg-gozi-700 hover:bg-gozi-500 duration-150 text-[#F4DFC8] py-2 px-3 font-[500] rounded-md"
             >
                 <i class="fa-solid fa-plus"></i>
                 Add New
