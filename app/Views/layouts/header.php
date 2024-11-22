@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="<?= base_url('vite.svg'); ?>">
     <title>ASSSSUUUUUUUUU</title>
     <?= $this->include('layouts/import'); ?>
     <style>
@@ -47,7 +48,7 @@
     </style>
 </head>
 
-<body class="flex overflow-hidden">
+<body class="flex">
     <?= $this->include('components/sidebar'); ?>
     <main class="grow overflow-x-auto px-4 py-1">
         <!-- <header class="w-full h-[52px] shadow-sm flex items-center rounded-md bg-[#FAF6F0]">
