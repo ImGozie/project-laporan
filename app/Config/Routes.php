@@ -22,4 +22,7 @@ $routes->group('users', ['filter' => 'auth'], function($routes) {
     $routes->get('datatable', 'Users\Users::getUsersData');
     $routes->get('form', 'Users\Users::forms');
     $routes->get('form/(:any)', 'Users\Users::forms/$1');
+    $routes->post('delete', 'Users\Users::deleteUser');
+    $routes->post('add', 'Users\Users::addUser');
+    $routes->post('update', 'Users\Users::updateUser');
 });
