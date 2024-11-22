@@ -660,7 +660,7 @@ div.dt-container .dt-paging .dt-paging-button {
 div.dt-container .dt-paging .dt-paging-button.current, div.dt-container .dt-paging .dt-paging-button.current:hover {
   color: #FAF6F0 !important;
   border-radius: 5px;
-  font-size: smaller !important;
+  font-size: 0.7rem !important;
   background-color: #3f83f8 !important;
 }
 div.dt-container .dt-paging .dt-paging-button.disabled, div.dt-container .dt-paging .dt-paging-button.disabled:hover, div.dt-container .dt-paging .dt-paging-button.disabled:active {
@@ -671,7 +671,7 @@ div.dt-container .dt-paging .dt-paging-button.disabled, div.dt-container .dt-pag
   box-shadow: none;
 }
 div.dt-container .dt-paging .dt-paging-button:hover {
-  color: white !important;
+  color: #1b4bda !important;
 }
 div.dt-container .dt-paging .dt-paging-button:active {
   outline: none;
@@ -685,7 +685,7 @@ div.dt-container .dt-info,
 div.dt-container .dt-processing,
 div.dt-container .dt-paging {
   color: inherit;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
 }
 div.dt-container .dataTables_scroll {
