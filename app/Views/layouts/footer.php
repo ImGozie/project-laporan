@@ -1,3 +1,4 @@
+<!-- crud modal -->
 <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center !items-start w-full md:inset-0 backdrop-blur-sm bg-black/70 h-screen max-h-full">
     <div class="relative p-4 !top-10 w-full max-w-xl max-h-full">
         <div class="relative bg-white rounded-lg shadow">
@@ -16,30 +17,86 @@
         </div>
     </div>
 </div>
+<!-- delete modal -->
+<div id="delete-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-start w-full md:inset-0 backdrop-blur-sm bg-black/70 h-screen max-h-full">
+    <div class="relative p-4 top-10 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow">
+            <button type="button" class="close-delete-button absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-4 md:p-5 text-center">
+                <svg class="mx-auto mb-4 text-gray-400 w-9 h-9" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <h3 id="modal-delete-title" class="mb-5 capitalize text-md font-normal text-gray-500"></h3>
+                <button id="confirm-action" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-md text-sm inline-flex items-center px-5 py-2.5 text-center">
+                    Yes, I'm sure
+                </button>
+                <button type="button" class="close-delete-button py-2.5 px-5 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-md border border-gozi-100 hover:bg-gray-100 hover:text-gozi-600 focus:z-10 focus:ring-4 focus:ring-gray-100">No, cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 </main>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script>
-    $(document).ready(function() {
-        // open modal
-        window.openModal = function(modalTitle, formUrl) {
-            $('#modal-title').text(modalTitle);
-            $('#modal-body').load(formUrl, function() {
-                $('#crud-modal').removeClass('hidden').addClass('flex');
-            });
-        }
-        // close modal
-        window.closeModal = function() {
-            $('#crud-modal').removeClass('flex').addClass('hidden');
-        }
-        // Close Modal trigger
-        $('#close-modal-button').on('click', function() {
-            closeModal();
+    function openModal(modalTitle, formUrl) {
+        $('#modal-title').text(modalTitle);
+        $('#modal-body').load(formUrl, function() {
+            $('#crud-modal').removeClass('hidden').addClass('flex');
         });
-        $('#crud-modal').on('click', function(event) {
+    }
+
+    function modalDelete(modalTitle, formUrl, dataId) {
+        $('#modal-delete-title').text(modalTitle + '?');
+        $('#delete-modal').removeClass('hidden').addClass('flex');
+        
+        $('#confirm-action').off('click').on('click', function() {
+            $.ajax({
+                url: formUrl,
+                type: 'post',
+                data: {id: dataId} ,
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    if (response.success) {
+                        console.log('Data successfully deleted.');
+                        closeModal('#delete-modal');
+                        tb.ajax.reload();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(id);
+                    console.log('An error occurred: ' + error);
+                }
+            });
+        });
+    }
+
+    function closeModal(modalId) {
+        $(modalId).removeClass('flex').addClass('hidden');
+    }
+
+    function initCloseModalTrigger(btnId, modalId) {
+        $(btnId).on('click', function() {
+            closeModal(modalId);
+        });
+
+        $(modalId).on('click', function(event) {
             if (event.target === this) {
-                closeModal();
+                closeModal(modalId);
             }
         });
+    }
+
+    $(document).ready(function() {
+        initCloseModalTrigger('#close-modal-button', '#crud-modal');
+        initCloseModalTrigger('.close-delete-button', '#delete-modal');
     });
 </script>
 </body>
