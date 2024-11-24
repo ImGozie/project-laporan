@@ -3,14 +3,13 @@
 namespace App\Controllers\Users;
 
 use App\Controllers\BaseController;
-use App\Models\Menu;
 use App\Models\Users as ModelsUsers;
+use App\Models\Menu;
 use App\Helpers\DatatableHelper;
 use App\Helpers\RequestHelper;
 use Exception;
-use CodeIgniter\HTTP\ResponseInterface;
-
 require_once APPPATH . 'Helpers/EncryptionHelper.php';
+use CodeIgniter\HTTP\ResponseInterface;
 
 class Users extends BaseController
 {
