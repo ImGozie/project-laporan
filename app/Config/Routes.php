@@ -38,10 +38,25 @@ $routes->group('jurusan', ['filter' => 'auth'], function($routes) {
 });
 $routes->group('currentstatus', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Master\CurrentStatus::index');
-    $routes->get('datatable', 'Master\CurrentStatus::getCurrentstatusData');
+    $routes->get('datatable', 'Master\CurrentStatus::getCurrentStatusData');
     $routes->get('form', 'Master\CurrentStatus::forms');
     $routes->get('form/(:any)', 'Master\CurrentStatus::forms/$1');
-    $routes->post('delete', 'Master\CurrentStatus::deleteCurrentstatus');
-    $routes->post('add', 'Master\CurrentStatus::addCurrentstatus');
-    $routes->post('update', 'Master\CurrentStatus::updateCurrentstatus');
+    $routes->post('delete', 'Master\CurrentStatus::deleteCurrentStatus');
+    $routes->post('add', 'Master\CurrentStatus::addCurrentStatus');
+    $routes->post('update', 'Master\CurrentStatus::updateCurrentStatus');
+});
+$routes->group('jobinfo', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Master\Jobinfo::index');
+    $routes->get('datatable', 'Master\Jobinfo::getJobinfoData');
+    $routes->get('form', 'Master\Jobinfo::forms');
+    $routes->get('form/(:any)', 'Master\Jobinfo::forms/$1');
+    $routes->post('delete', 'Master\Jobinfo::deleteJobinfo');
+    $routes->post('add', 'Master\Jobinfo::addJobinfo');
+    $routes->post('update', 'Master\Jobinfo::updateJobinfo');
+});
+$routes->group('forms', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Forms\FormAlumni::index');
+    $routes->post('delete', 'Forms\FormAlumni::deleteJobinfo');
+    $routes->post('add', 'Forms\FormAlumni::addJobinfo');
+    $routes->post('update', 'Forms\FormAlumni::updateJobinfo');
 });
