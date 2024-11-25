@@ -3,20 +3,19 @@
 namespace App\Controllers\Master;
 
 use App\Controllers\BaseController;
-use App\Models\Master\Msjurusan;
+use App\Models\Master\Msjobinfo;
 use App\Models\Menu;
 use App\Helpers\DatatableHelper;
 use App\Helpers\RequestHelper;
 use Exception;
 require_once APPPATH . 'Helpers/EncryptionHelper.php';
-use CodeIgniter\HTTP\ResponseInterface;
 
-class Jurusan extends BaseController
+class Jobinfo extends BaseController
 {
     public function __construct()
     {
         $this->menu = new Menu();
-        $this->jurusan = new Msjurusan();
+        $this->jobinf = new Msjobinfo();
     }
 
     public function index()
@@ -24,7 +23,7 @@ class Jurusan extends BaseController
         $data = [
             'menu' => json_decode($this->menu->getMenu()),
         ];
-        return view('Master/jurusan/v_jurusan', $data);
+        return view('Master/jobinfo/v_jobinfo', $data);
     }
 
     public function forms($id = '')
@@ -34,15 +33,15 @@ class Jurusan extends BaseController
         $data = [
             'id' => encrypting($id),
             'formType' => $formType,
-            'res' => $this->jurusan->getOne($id),
+            'res' => $this->jobinf->getOne($id),
         ];
-        return view('Master/jurusan/form', $data);
+        return view('Master/jobinfo/form', $data);
     }
 
-    public function getJurusanData()
+    public function getJobinfoData()
     {
-        $builder = $this->jurusan->datatables();
-        $config = $this->jurusan->getTableConfig();
+        $builder = $this->jobinf->datatables();
+        $config = $this->jobinf->getTableConfig();
         $params = RequestHelper::getDatatableRequest();
 
         $result = DatatableHelper::getDatatablesAndTotal(
@@ -53,12 +52,12 @@ class Jurusan extends BaseController
         array_map(function ($row) {
             $row->action = '
                 <div class="flex whitespace-nowrap items-center justify-center">
-                    <button onclick="openModal(\'Edit Jurusan - ' . $row->majorname . '\', \'' . site_url('jurusan/form/' . encrypting($row->id)) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
+                    <button onclick="openModal(\'Edit Job Information - ' . $row->info . '\', \'' . site_url('jobinfo/form/' . encrypting($row->id)) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
                         <span>
                             <i class="fa-solid fa-pen"></i>
                         </span>
                     </button>
-                    <button onclick="modalDelete(\'Delete Jurusan ' . $row->majorname . '\', \'' . site_url('jurusan/delete') . '\', \'' . encrypting($row->id) . '\')" class="min-w-7 min-h-8 text-gozi-950 rounded-r-lg"><i class="fa-solid fa-trash mx-0.5"></i></button>
+                    <button onclick="modalDelete(\'Delete Job Information ' . $row->info . '\', \'' . site_url('jobinfo/delete') . '\', \'' . encrypting($row->id) . '\')" class="min-w-7 min-h-8 text-gozi-950 rounded-r-lg"><i class="fa-solid fa-trash mx-0.5"></i></button>
                 </div>
             ';
         }, $result['data']);
@@ -71,15 +70,15 @@ class Jurusan extends BaseController
         echo json_encode($output);
     }
 
-    public function addJurusan()
+    public function addJobinfo()
     {
-        $majorname = $this->request->getPost('majorname');
+        $info = $this->request->getPost('info');
         try {
             $data = [
-                'majorname' => $majorname,
+                'info' => $info,
                 'created_date' => date('Y-m-d H:i:s'),
             ];
-            $this->jurusan->store($data);
+            $this->jobinf->store($data);
             $response = [
                 'success' => true,
                 'message' => 'Added successfully'
@@ -90,20 +89,20 @@ class Jurusan extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function updateJurusan()
+    public function updateJobinfo()
     {
         $id = decrypting($this->request->getPost('id'));
-        $majorname = $this->request->getPost('majorname');
+        $info = $this->request->getPost('info');
         $response = array();
         try {
             if (empty($id)) {
                 throw new Exception("ID is required.");
             }
             $data = [
-                'majorname' => $majorname,
+                'info' => $info,
                 'updated_date' => date('Y-m-d H:i:s'),
             ];
-            $this->jurusan->edit($id, $data);
+            $this->jobinf->edit($id, $data);
             $response = [
                 'success' => true,
                 'message' => 'Updated successfully'
@@ -118,7 +117,7 @@ class Jurusan extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function deleteJurusan()
+    public function deleteJobinfo()
     {
         $id = decrypting($this->request->getPost('id'));
         $res = array();
@@ -126,7 +125,7 @@ class Jurusan extends BaseController
             if (empty($id)) {
                 throw new Exception("ID is required.");
             }
-            $this->jurusan->destroy($id);
+            $this->jobinf->destroy($id);
             $res = [
                 'success' => true,
                 'message' => 'Successfully deleted.',

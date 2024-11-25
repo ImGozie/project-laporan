@@ -3,7 +3,7 @@
 namespace App\Controllers\Master;
 
 use App\Controllers\BaseController;
-use App\Models\Master\Msjurusan;
+use App\Models\Master\Mscurrentstatus;
 use App\Models\Menu;
 use App\Helpers\DatatableHelper;
 use App\Helpers\RequestHelper;
@@ -11,12 +11,12 @@ use Exception;
 require_once APPPATH . 'Helpers/EncryptionHelper.php';
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Jurusan extends BaseController
+class CurrentStatus extends BaseController
 {
     public function __construct()
     {
         $this->menu = new Menu();
-        $this->jurusan = new Msjurusan();
+        $this->currentstatus = new Mscurrentstatus();
     }
 
     public function index()
@@ -24,7 +24,7 @@ class Jurusan extends BaseController
         $data = [
             'menu' => json_decode($this->menu->getMenu()),
         ];
-        return view('Master/jurusan/v_jurusan', $data);
+        return view('Master/currentstatus/v_currentstatus', $data);
     }
 
     public function forms($id = '')
@@ -34,15 +34,15 @@ class Jurusan extends BaseController
         $data = [
             'id' => encrypting($id),
             'formType' => $formType,
-            'res' => $this->jurusan->getOne($id),
+            'res' => $this->currentstatus->getOne($id),
         ];
-        return view('Master/jurusan/form', $data);
+        return view('Master/currentstatus/form', $data);
     }
 
-    public function getJurusanData()
+    public function getCurrentStatusData()
     {
-        $builder = $this->jurusan->datatables();
-        $config = $this->jurusan->getTableConfig();
+        $builder = $this->currentstatus->datatables();
+        $config = $this->currentstatus->getTableConfig();
         $params = RequestHelper::getDatatableRequest();
 
         $result = DatatableHelper::getDatatablesAndTotal(
@@ -53,12 +53,12 @@ class Jurusan extends BaseController
         array_map(function ($row) {
             $row->action = '
                 <div class="flex whitespace-nowrap items-center justify-center">
-                    <button onclick="openModal(\'Edit Jurusan - ' . $row->majorname . '\', \'' . site_url('jurusan/form/' . encrypting($row->id)) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
+                    <button onclick="openModal(\'Edit Current Status - ' . $row->status . '\', \'' . site_url('currentstatus/form/' . encrypting($row->id)) . '\')" class="inline-flex items-center justify-center  min-w-7 min-h-8 !text-gozi-950 rounded-l-lg">
                         <span>
                             <i class="fa-solid fa-pen"></i>
                         </span>
                     </button>
-                    <button onclick="modalDelete(\'Delete Jurusan ' . $row->majorname . '\', \'' . site_url('jurusan/delete') . '\', \'' . encrypting($row->id) . '\')" class="min-w-7 min-h-8 text-gozi-950 rounded-r-lg"><i class="fa-solid fa-trash mx-0.5"></i></button>
+                    <button onclick="modalDelete(\'Delete Current Status ' . $row->status . '\', \'' . site_url('currentstatus/delete') . '\', \'' . encrypting($row->id) . '\')" class="min-w-7 min-h-8 text-gozi-950 rounded-r-lg"><i class="fa-solid fa-trash mx-0.5"></i></button>
                 </div>
             ';
         }, $result['data']);
@@ -71,15 +71,17 @@ class Jurusan extends BaseController
         echo json_encode($output);
     }
 
-    public function addJurusan()
+    public function addCurrentStatus()
     {
-        $majorname = $this->request->getPost('majorname');
+        $status = $this->request->getPost('status');
+        $desc = $this->request->getPost('desc');
         try {
             $data = [
-                'majorname' => $majorname,
+                'status' => $status,
+                'desc' => $desc,
                 'created_date' => date('Y-m-d H:i:s'),
             ];
-            $this->jurusan->store($data);
+            $this->currentstatus->store($data);
             $response = [
                 'success' => true,
                 'message' => 'Added successfully'
@@ -90,20 +92,22 @@ class Jurusan extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function updateJurusan()
+    public function updateCurrentStatus()
     {
         $id = decrypting($this->request->getPost('id'));
-        $majorname = $this->request->getPost('majorname');
+        $status = $this->request->getPost('status');
+        $desc = $this->request->getPost('desc');
         $response = array();
         try {
             if (empty($id)) {
                 throw new Exception("ID is required.");
             }
             $data = [
-                'majorname' => $majorname,
+                'status' => $status,
+                'desc' => $desc,
                 'updated_date' => date('Y-m-d H:i:s'),
             ];
-            $this->jurusan->edit($id, $data);
+            $this->currentstatus->edit($id, $data);
             $response = [
                 'success' => true,
                 'message' => 'Updated successfully'
@@ -118,7 +122,7 @@ class Jurusan extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function deleteJurusan()
+    public function deleteCurrentStatus()
     {
         $id = decrypting($this->request->getPost('id'));
         $res = array();
@@ -126,7 +130,7 @@ class Jurusan extends BaseController
             if (empty($id)) {
                 throw new Exception("ID is required.");
             }
-            $this->jurusan->destroy($id);
+            $this->currentstatus->destroy($id);
             $res = [
                 'success' => true,
                 'message' => 'Successfully deleted.',

@@ -76,7 +76,7 @@ class Authenticator extends BaseController
             if ($user['role'] === 'admin') {
                 return redirect()->to('/dashboard');
             } elseif ($user['role'] === 'user') {
-                return redirect()->to('/form');
+                return redirect()->to('forms');
             }
         } else {
             session()->setFlashdata('error', 'Username atau password salah.');
