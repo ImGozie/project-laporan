@@ -49,4 +49,14 @@ class Msjurusan extends Model
     {
         return $this->db->table($this->table)->delete(['id' => $id]);
     }
+
+    public function getSelect($search, $limit = 15)
+    {
+        $query = $this->db->table($this->table)
+            ->select('id, majorname');
+        if (!empty($search)) {
+            $query->like('lower(majorname)', strtolower($search));
+        }
+        return $query->limit($limit)->get()->getResultArray();
+    }
 }

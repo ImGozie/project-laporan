@@ -13,6 +13,17 @@ class AuthCheck implements FilterInterface
         if (empty(session()->get('userid'))) {
             return redirect()->to('/');
         }
+        
+        $role = session()->get('role');
+        $uri = $request->getUri()->getPath();
+
+        if ($role === 'user' && strpos($uri, 'forms') === false) {
+            return redirect()->to('/forms');
+        }
+
+        if ($role === 'admin' && strpos($uri, 'forms') !== false) {
+            return redirect()->to('/dashboard');
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

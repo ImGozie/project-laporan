@@ -54,7 +54,12 @@ class Authenticator extends BaseController
                 $this->users->store($data);
                 session()->set($data);
             }
-            return redirect()->to('/dashboard');
+            $role = session()->get('role');
+            if ($role === 'admin') {
+                return redirect()->to('/dashboard');
+            } elseif ($role === 'user') {
+                return redirect()->to('/forms');
+            }
         }
     }
 
@@ -72,11 +77,10 @@ class Authenticator extends BaseController
                 'email' => $user['email'],
                 'role' => $user['role']
             ]);
-
             if ($user['role'] === 'admin') {
                 return redirect()->to('/dashboard');
             } elseif ($user['role'] === 'user') {
-                return redirect()->to('forms');
+                return redirect()->to('/forms');
             }
         } else {
             session()->setFlashdata('error', 'Username atau password salah.');

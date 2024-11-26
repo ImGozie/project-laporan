@@ -36,6 +36,8 @@ $routes->group('jurusan', ['filter' => 'auth'], function($routes) {
     $routes->post('add', 'Master\Jurusan::addJurusan');
     $routes->post('update', 'Master\Jurusan::updateJurusan');
 });
+$routes->get('jurusan/getjurusan', 'Master\Jurusan::getSelect');
+
 $routes->group('currentstatus', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Master\CurrentStatus::index');
     $routes->get('datatable', 'Master\CurrentStatus::getCurrentStatusData');

@@ -141,4 +141,18 @@ class Jurusan extends BaseController
         // $res['csrfToken'] = csrf_hash();
         return $this->response->setJSON($res);
     }
+
+    public function getSelect()
+    {
+        $search = $this->request->getVar('search');
+        $results = $this->jurusan->getSelect($search);
+        $data = [];
+        foreach ($results as $row) {
+            $data[] = [
+                'id' => $row['id'],
+                'text' => $row['majorname']
+            ];
+        }
+        return $this->response->setJSON($data);
+    }
 }
