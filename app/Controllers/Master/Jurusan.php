@@ -149,7 +149,7 @@ class Jurusan extends BaseController
         $data = [];
         foreach ($results as $row) {
             $data[] = [
-                'id' => $row['id'],
+                'id' => encrypting($row['id']),
                 'text' => $row['majorname']
             ];
         }

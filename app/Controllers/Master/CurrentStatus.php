@@ -145,4 +145,18 @@ class CurrentStatus extends BaseController
         // $res['csrfToken'] = csrf_hash();
         return $this->response->setJSON($res);
     }
+
+    public function getSelect()
+    {
+        $search = $this->request->getVar('search');
+        $results = $this->currentstatus->getSelect($search);
+        $data = [];
+        foreach ($results as $row) {
+            $data[] = [
+                'id' => encrypting($row['id']),
+                'text' => $row['status']
+            ];
+        }
+        return $this->response->setJSON($data);
+    }
 }

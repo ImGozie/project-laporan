@@ -50,4 +50,14 @@ class Mscurrentstatus extends Model
     {
         return $this->db->table($this->table)->delete(['id' => $id]);
     }
+
+    public function getSelect($search, $limit = 15)
+    {
+        $query = $this->db->table($this->table)
+            ->select('id, status');
+        if (!empty($search)) {
+            $query->like('lower(status)', strtolower($search));
+        }
+        return $query->limit($limit)->get()->getResultArray();
+    }
 }

@@ -140,4 +140,18 @@ class Jobinfo extends BaseController
         // $res['csrfToken'] = csrf_hash();
         return $this->response->setJSON($res);
     }
+
+    public function getSelect()
+    {
+        $search = $this->request->getVar('search');
+        $results = $this->jobinf->getSelect($search);
+        $data = [];
+        foreach ($results as $row) {
+            $data[] = [
+                'id' => encrypting($row['id']),
+                'text' => $row['info']
+            ];
+        }
+        return $this->response->setJSON($data);
+    }
 }

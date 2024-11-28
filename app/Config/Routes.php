@@ -47,6 +47,8 @@ $routes->group('currentstatus', ['filter' => 'auth'], function($routes) {
     $routes->post('add', 'Master\CurrentStatus::addCurrentStatus');
     $routes->post('update', 'Master\CurrentStatus::updateCurrentStatus');
 });
+$routes->get('currentstatus/getstatus', 'Master\CurrentStatus::getSelect');
+
 $routes->group('jobinfo', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Master\Jobinfo::index');
     $routes->get('datatable', 'Master\Jobinfo::getJobinfoData');
@@ -56,9 +58,12 @@ $routes->group('jobinfo', ['filter' => 'auth'], function($routes) {
     $routes->post('add', 'Master\Jobinfo::addJobinfo');
     $routes->post('update', 'Master\Jobinfo::updateJobinfo');
 });
+$routes->get('jobinfo/getjobinfo', 'Master\Jobinfo::getSelect');
+
 $routes->group('forms', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Forms\FormAlumni::index');
+    $routes->post('submit', 'Forms\FormAlumni::submitForm');
     $routes->post('delete', 'Forms\FormAlumni::deleteJobinfo');
-    $routes->post('add', 'Forms\FormAlumni::addJobinfo');
     $routes->post('update', 'Forms\FormAlumni::updateJobinfo');
+    $routes->get('getyear', 'Forms\FormAlumni::getYears');
 });
