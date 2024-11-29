@@ -5,7 +5,9 @@ namespace App\Controllers\Forms;
 use App\Controllers\BaseController;
 use App\Models\Forms\FormsModel;
 use Exception;
+
 require_once APPPATH . 'Helpers/EncryptionHelper.php';
+
 use CodeIgniter\HTTP\ResponseInterface;
 
 class FormAlumni extends BaseController
@@ -19,18 +21,23 @@ class FormAlumni extends BaseController
     {
         return view('Forms/v_form');
     }
+    public function adminPage()
+    {
+        return view('formmanage/v_formmanage');
+    }
 
     public function submitForm()
     {
         $nis = $this->request->getPost('nis');
         $name = $this->request->getPost('name');
         $phone = $this->request->getPost('phone');
-        $socialmedia = $this->request->getPost('socialmedia');
-        $currentjob = $this->request->getPost('currentjob');
+        $socialmedia = $this->request->getPost('socialmedia') ?: null;
+        $currentjob = $this->request->getPost('currentjob') ?: null;
         $year = $this->request->getPost('year');
         $major = decrypting($this->request->getPost('major'));
         $currentstatus = decrypting($this->request->getPost('currentstatus'));
-        $jobinfo = decrypting($this->request->getPost('jobinfo'));
+        $jobinfo = $this->request->getPost('jobinfo');
+        $jobinfo = empty($jobinfo) ? null : decrypting($jobinfo);
         try {
             $data = [
                 'nis' => $nis,

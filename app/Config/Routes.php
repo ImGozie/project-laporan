@@ -60,10 +60,16 @@ $routes->group('jobinfo', ['filter' => 'auth'], function($routes) {
 });
 $routes->get('jobinfo/getjobinfo', 'Master\Jobinfo::getSelect');
 
+$routes->group('manageform', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Forms\ManageForm::index');
+    $routes->get('datatable', 'Forms\ManageForm::getFormData');
+    $routes->post('delete', 'Forms\ManageForm::deleteJobinfo');
+    $routes->post('update', 'Forms\ManageForm::updateJobinfo');
+});
+
 $routes->group('forms', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Forms\FormAlumni::index');
     $routes->post('submit', 'Forms\FormAlumni::submitForm');
-    $routes->post('delete', 'Forms\FormAlumni::deleteJobinfo');
     $routes->post('update', 'Forms\FormAlumni::updateJobinfo');
     $routes->get('getyear', 'Forms\FormAlumni::getYears');
 });

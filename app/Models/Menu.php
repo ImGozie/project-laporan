@@ -16,7 +16,7 @@ class Menu extends Model
             ['id' => 5, 'name' => 'Current status', 'icon' => 'fa-user-tie', 'url' => 'currentstatus', 'type' => 'submenu', 'desc' => 'Status saat ini'],
             ['id' => 6, 'name' => 'Job Information', 'icon' => 'fa-circle-info', 'url' => 'jobinfo', 'type' => 'submenu', 'desc' => 'Mendapatkan informasi Pekerjaan dari mana ?'],
             ['id' => 7, 'name' => 'College Status', 'icon' => 'fa-graduation-cap', 'url' => 'collegestatus', 'type' => 'submenu', 'desc' => 'Status Perguruan Tinggi '],
-            ['id' => 8, 'name' => 'Data Form', 'icon' => 'fa-file-lines', 'url' => 'dataform', 'type' => 'menu', 'desc' => ''],
+            ['id' => 8, 'name' => 'Data Form', 'icon' => 'fa-file-lines', 'url' => 'manageform', 'type' => 'menu', 'desc' => ''],
         ];
 
         return json_encode($menu);

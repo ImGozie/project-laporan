@@ -26,16 +26,16 @@ class FormsModel extends Model
     {
         return $this->db->table($this->table)
             ->select('a.*, b.majorname, c.status, d.info, u.username, u.email')
-            ->join('jurusan as b', 'b.id = a.majorid')
-            ->join('currentstatus as c', 'c.id = a.currentstatusid')
-            ->join('jobinfo as d', 'd.id = a.jobinfoid')
-            ->join('users as u', 'u.userid = a.submit_by');
+            ->join('jurusan as b', 'b.id = a.majorid', 'left')
+            ->join('currentstatus as c', 'c.id = a.currentstatusid', 'left')
+            ->join('jobinfo as d', 'd.id = a.jobinfoid', 'left')
+            ->join('users as u', 'u.userid = a.submit_by', 'left');
     }
 
     public function getTableConfig()
     {
         return [
-            'searchable' => ['nis', 'fullname'],
+            'searchable' => ['a.nis', 'fullname'],
             'orderBy' => [
                 'id',
                 'nis',
