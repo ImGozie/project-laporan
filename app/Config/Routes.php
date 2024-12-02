@@ -8,15 +8,29 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Auth\Authenticator::index', ['filter' => 'alreadyLoggedIn']);
 
+$routes->get('/dashboard', 'Home\Dashboard::index', ['filter' => 'auth']);
+$routes->get('/master', 'Master\Main::index', ['filter' => 'auth']);
+
+$routes->group('manageform', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Forms\ManageForm::index');
+    $routes->get('datatable', 'Forms\ManageForm::getFormData');
+    $routes->post('delete', 'Forms\ManageForm::deleteJobinfo');
+    $routes->post('update', 'Forms\ManageForm::updateJobinfo');
+});
+
+$routes->group('forms', ['filter' => 'auth'], function($routes) {
+    $routes->get('', 'Forms\FormAlumni::index');
+    $routes->post('submit', 'Forms\FormAlumni::submitForm');
+    $routes->post('update', 'Forms\FormAlumni::updateJobinfo');
+    $routes->get('getyear', 'Forms\FormAlumni::getYears');
+});
+
 $routes->group('login', ['filter' => 'alreadyLoggedIn'], function($routes) {
     $routes->get('', 'Auth\Authenticator::index');
     $routes->get('callback', 'Auth\Authenticator::oauthProcess');
     $routes->post('localAuth', 'Auth\Authenticator::localProcess');
 });
 $routes->get('auth/logout', 'Auth\Authenticator::logoutProcess');
-
-$routes->get('/dashboard', 'Home\Dashboard::index', ['filter' => 'auth']);
-$routes->get('/master', 'Master\Main::index', ['filter' => 'auth']);
 
 $routes->group('users', ['filter' => 'auth'], function($routes) {
     $routes->get('', 'Users\Users::index');
@@ -59,17 +73,3 @@ $routes->group('jobinfo', ['filter' => 'auth'], function($routes) {
     $routes->post('update', 'Master\Jobinfo::updateJobinfo');
 });
 $routes->get('jobinfo/getjobinfo', 'Master\Jobinfo::getSelect');
-
-$routes->group('manageform', ['filter' => 'auth'], function($routes) {
-    $routes->get('', 'Forms\ManageForm::index');
-    $routes->get('datatable', 'Forms\ManageForm::getFormData');
-    $routes->post('delete', 'Forms\ManageForm::deleteJobinfo');
-    $routes->post('update', 'Forms\ManageForm::updateJobinfo');
-});
-
-$routes->group('forms', ['filter' => 'auth'], function($routes) {
-    $routes->get('', 'Forms\FormAlumni::index');
-    $routes->post('submit', 'Forms\FormAlumni::submitForm');
-    $routes->post('update', 'Forms\FormAlumni::updateJobinfo');
-    $routes->get('getyear', 'Forms\FormAlumni::getYears');
-});
